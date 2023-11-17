@@ -1,3 +1,8 @@
+mariadb -u root -p      //p는 패스워드 생략  
+show databases;
+
+
+
 -- 데이터 베이스 생성
 CREATE DATABASE board;
 
@@ -63,8 +68,7 @@ SHOW CREATE TABLE posts;
 
 
 -- 테이블 제약조건 조회 
-SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-WHERE TABLE_NAME = 'posts';
+SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = 'posts';
 
 
 -- 테이블 index 조회
@@ -130,6 +134,7 @@ CREATE TABLE `post` (
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
 
+-- 삭제
 DROP TABLE POST;
 
 

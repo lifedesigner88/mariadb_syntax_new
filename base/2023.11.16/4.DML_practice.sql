@@ -31,6 +31,7 @@ describe post;
 -- 방법 1
 delete from post where id=1;
 delete from post where author_id=2;
+UPDATE post set author_id=null WHERE author_id IS NOT NULL;
 
 -- 방법 2
 UPDATE post set author_id = null where author_id =2;
@@ -52,3 +53,11 @@ SELECT * FROM author;
     select name, email from author where id=1;
     select * from author where id > 10 and name ='abc';
     select * from authro where id > 1 and name ='kim';
+
+-- 타입 (숫자)
+
+    정수
+        TINYINT     //  1 바이트        // java 바이트
+        INTO        //  4 바이트        // java int
+        BIGINT      //  8 바이트        //
+        UNSIGNED    // 양수만 사용

@@ -76,3 +76,20 @@ ALTER TABLE author MODIFY COLUMN role ENUM('user','admin') NOT NULL DEFAULT 'use
 
 -- 시간실습 // 생성일자 컬럼 항상 들어간다. 
 ALTER TABLE post ADD COLUMN created_time datetime(6) default current_timestamp(6);
+
+
+-- 논리 연산자 (2~4)
+SELECT * FROM post WHERE id BETWEEN 2 AND 4;
+SELECT * FROM post WHERE id >= 2 AND id <= 4;
+SELECT * FROM post WHERE NOT(id < 2 OR id > 4);
+
+
+
+-- LIKE 포함 비 포함. 
+SELECT * FROM author WHERE name LIKE '%G';
+SELECT * FROM author WHERE name LIKE 's%';
+SELECT * FROM author WHERE name LIKE '1%';
+
+SELECT * FROM author WHERE name NOT LIKE '%G';
+SELECT * FROM author WHERE name NOT LIKE 's%';
+SELECT * FROM author WHERE name NOT LIKE '1%';

@@ -92,3 +92,44 @@ CHAR
     IS NULL, IS NOT NULL (NULL)
     BETWEEN min AND max             // 이상, 이하. 
     IN(), NOT IN()                  // 가나다라, 마바사, 
+
+
+-- 논리연산자 
+
+    A AND B   //    A && B
+    
+    A OR A    //    A || A
+
+
+    
+-- 검색 패턴
+
+    LIKE // NOTLIKE
+        -   특정 패턴을 포함하는 데이터만을 검색하기 위한 와일드 칻 (WILDCARD) 문자
+        -   일반적으로 %와 함께 사용됨
+        -   SELECT * FROM author WHERE name LIKE '홍%'; // 홍으로 시작
+        -   SELECT * FROM author WHERE name LIKE '%동'; // 홍으로 시작
+        -   SELECT * FROM author WHERE name LIKE '%길%'; // 홍으로 시작
+
+    
+    REGEXP '[a-z]'
+        -   SELECT * FROM author WHERE name REGEXP '[a-z]'; // abcd 포함
+        -   SELECT * FROM author WHERE name REGEXP '[가-힣]'; // 한글 포함
+
+    
+    -- 타입 변환
+
+    CAST            // 
+        CAST(a AS type)
+        a 값을 type으로 변환
+        보통 정수값을 DATE 타입으로 변환하는데 사용
+        SELECT CAST(20200101 AS DATE); => 2020-01-01
+
+
+    CONVERT         // 문자열
+        SELECT CAST('20200101' AS DATE); => 2020-01-01
+
+    DATE_FORMAT 
+        SELECT DATE_FORMAT ('2020-01-01 17:12:00', '%Y-%M-&T')
+
+

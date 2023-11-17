@@ -49,8 +49,7 @@ SELECT name from [테이블이름][WHERE 조건];
 SELECT * FROM author;
 
 예제,
-    select * from author where id =1;
-    select name, email from author where id=1;
-    select * from author where id > 10 and name ='abc';
-    select * from authro where id > 1 and name ='kim';
-
+select * from author where id =1;
+select name, email from author where id=1;
+select * from author where id > 10 and name ='abc';
+select * from authro where id > 1 and name ='kim';

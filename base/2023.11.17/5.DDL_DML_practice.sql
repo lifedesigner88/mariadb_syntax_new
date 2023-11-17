@@ -53,3 +53,26 @@ DESCRIBE POST;
 INSERT INTO post(id, title, price) value(6, 'djkd', 3.123141231);
 INSERT INTO post(id, title, price) value(9, 'djkd', 1234567.123);
 UPDATE post set price=1234.1 WHERE id=6;
+
+
+CREATE TABLE table_blob(id int, myimg longblob);
+DESCRIBE table_blob;
+SELECT * FROM table_blob;
+DROP TABLE table_blob;
+INSERT INTO table_blob(id, myimg) VALUES(3, LOAD_FILE('C:\\test_picture.jpg'));
+
+DESCRIBE author;
+SELECT * FROM author;
+UPDATE author set role='user' WHERE id=1;
+INSERT 	INTO author	(id, name, email, password, role, address, age) 
+		value		(3, 'ser', '23@', 113124, 'user',	'adfasf', 33);
+
+INSERT 	INTO author	(id, name, email, password, address, age) 
+		value		(4, 'ser', '23@', 113124, 'adfasf', 33);
+
+ALTER TABLE author MODIFY COLUMN role ENUM('user','admin') NOT NULL DEFAULT 'user';
+
+
+
+-- 시간실습 // 생성일자 컬럼 항상 들어간다. 
+ALTER TABLE post ADD COLUMN created_time datetime(6) default current_timestamp(6);

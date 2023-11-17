@@ -36,7 +36,6 @@ LIMIT(제한)
 -- 별칭( alias ) 이용한 처리
 
 SELECT name as AS 이름 FROM author
-SELECT name as
 
 
 -- 타입 (숫자)
@@ -67,5 +66,29 @@ CHAR
         - 컬럼명 ENUM('데이터값1', '데이터값2', ...)
         - NOT NULL DEFAULT 'USER'   //    입력없으면 'USER'을 기본값으로.
 
-    
-    
+
+-- 타입(data type) - 날짜와 시간
+
+    DATE
+        - 날짜를 저장할 수 있는 타입
+        - YYYY-MM-DDL
+    DATETIME(m)
+        - 날짜와 함께 시간까지 저장, m지정시 소수점 microseconds
+        - 'YYY-MM-DD HH:MM:SS'
+        - java의 localdatetime과 sync
+
+    DATETIME DEFAULT CURRENT_TIMESTAMP
+        - 현재시간을 default로 삽입하는 형식.    
+            utc = kst -9
+            kst = utc +9
+
+
+
+-- 비교연산자
+
+    =
+    !=, <>
+    <, <=, >, >=
+    IS NULL, IS NOT NULL (NULL)
+    BETWEEN min AND max             // 이상, 이하. 
+    IN(), NOT IN()                  // 가나다라, 마바사, 

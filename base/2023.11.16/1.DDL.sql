@@ -79,7 +79,6 @@ SHOW INDEX FROM posts;
 
 
 
-
  컬럼 추가 (ADD)
     ALTER TABLE 테이블명 ADD COLUMN 컬럼명 자료형 [NULL 또는 NOTNULL]
     ALTER TABLE author  ADD COLUMN c
@@ -94,8 +93,6 @@ ALTER TABLE author ADD      COLUMN role VARCHAR(50)
 ALTER TABLE author DROP     COLUMN TEST    
 ALTER TABLE author CHANGE   COLUMN TEST1 TEST   VARCHAR(100)  NOT NULL      
                                          
-
-
 
 
 CREATE TABLE `author` (

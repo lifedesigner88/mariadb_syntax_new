@@ -53,3 +53,70 @@ select * from author where id =1;
 select name, email from author where id=1;
 select * from author where id > 10 and name ='abc';
 select * from authro where id > 1 and name ='kim';
+
+
+
+
+
+-- // 정렬, 데이터 포멧 변경. 
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND DATE_FORMAT(PUBLISHED_DATE , '%Y') ='2021' 
+        ORDER BY PUBLISHED_DATE ASC;
+
+
+
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND PUBLISHED_DATE LIKE '2021%' 
+        ORDER BY PUBLISHED_DATE ASC;
+
+        
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND PUBLISHED_DATE BEETWEEN ''
+        ORDER BY PUBLISHED_DATE ASC;
+
+
+SELECT * FROM post WHERE date_format(create_time, ) = 
+
+
+UNIQUE
+필드이름, 필드 타입,..., [CONSTRAINT 제약조건 이름] UNIQUE;
+
+
+
+SHOW INDEX FROM POST; -인덱스 
+
+ALTER TABLE author MODIFY COLUMN email 
+
+
+
+
+
+-- // 제약조건 
+SHOW INDEX FROM author;
+ALTER TABLE author ADD CONSTRAINT email_unique UNIQUE(email);
+
+ALTER TABLE 테이블명 DROP CONSTRAINT 제약조건 이름;
+ALTER TABLE 테이블명 DROP FOREIGN KEY 제약조건 이름;
+
+SELECT * FROM INFORMATION_SCHEMA
+
+ALTER TABLE author MODIFY COLUMN EMAIL VARCHAR(255) unique;
+제약조건, index 
+
+alter table author drop index email, 
+
+-- 방법 2
+
+ALTER TABLE author 
+
+
+ALTER TABLE post DROP FOREIGN KEY post_ibfk_1;
+
+
+
+
+ALTER TABLE post ADD CONSTRAINT post_update
+FOREIGN KEY(author_id) REFERENCES author(id) ON UPDATE CASCADE;

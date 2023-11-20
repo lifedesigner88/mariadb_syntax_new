@@ -187,8 +187,6 @@ WHERE created_time >='2021-01-01' AND created_time <='2023-11-17';
 
 
 
-
-
 제약조건
     데이터를 입력받을 때 실행되는 검사규칙
 
@@ -197,19 +195,18 @@ WHERE created_time >='2021-01-01' AND created_time <='2023-11-17';
      UNIQUE
 
 --  자동 증가.
-
-    AUTO 
-
+ALTER TABLE post MODIFY COLUMN id INT AUTO_INCREMENT;
 
 
 
 -- not null 조건 추가.
 ALTER TABLE author MODIFY COLUMN name varchar(100) not null;
 
+
 -- 외래키가 있는 경우. not널 조건 추가하려면 외래키를 꺼야한다.
 SET FOREIGN_KEY_CHECKS=0;	-- 외래키 체크 끄기
-ALTER TABLE post MODIFY COLUMN name varchar(100) not null;
 
+ALTER TABLE post MODIFY COLUMN name varchar(100) not null;
 SET FOREIGN_KEY_CHECKS=1;	-- 외래키 체크 켜기
 
 
@@ -222,6 +219,13 @@ on delete restrict, on update restrict;
 참조되는 테이블에서 데이터의 수정이나 삭제가 발생시 영향.
 
 CASCADE 참조되는 테이블에서 데이터를 삭제/수정 하면 같이 삭제/수정
-SET NULL 참조되는 테이블에서 데이터 수정하면 데이터 NULL 로 변경
+SET NULL 참조되는 테이블에서 데이터  삭제/수정 하면 데이터 NULL 로 변경
 RESTRICT FK로 잡은 테이블의 데이터가 남아 있으면, 데이터 삭제, 수정 불가. 
+
+
+
+
+ALTER TABLE post ADD CONSTRAINT post_update
+FOREIGN KEY(author_id) REFERENCES author(id) ON UPDATE CASCADE;
+
 

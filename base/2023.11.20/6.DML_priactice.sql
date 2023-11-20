@@ -1,4 +1,19 @@
-case
+SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME='post';
+ALTER TABLE post DROP FOREIGN KEY post_update;
+ALTER TABLE post DROP INDEX author_id;
+
+
+ALTER TABLE post ADD CONSTRAINT post_update FOREIGN KEY(author_id) REFERENCES author(id) ON UPDATE SET NULL;
+
+show index from post;
+show create table post;
+show create table author;
+
+DESCRIBE post;
+SELECT * FROM post;
+SELECT * FROM author;
+
+SHOW FULL COLUMNS FROM post;
 
 SELECT id, title, contents,  
 CASE author_id
@@ -21,12 +36,12 @@ as author_type from post;
 
 SELECT id, title, contents, ifnull(author_id, 'anonymous') as author_type from post;
 SELECT id, title, contents, if(author_id is null, 'anonymous', author_id) as author_type from post;  
-SELECT id, title, contents , if (author_id=1, 'first author', 'orther') as author_type FROM post;
+SELECT id, title, contents , if (author_id=1, 'first author', 'other') as author_type FROM post;
+
 
 
 
 -- 코드를 입력하세요
-
 SELECT BOARD_ID, WRITER_ID, TITLE, PRICE, 
 
 CASE STATUS
@@ -35,7 +50,7 @@ CASE STATUS
     WHEN 'DONE' THEN '거래완료'
 END
 
-as STATUS FROM USED_GOODS_BOARD 
+AS STATUS FROM USED_GOODS_BOARD 
 WHERE CREATED_DATE='2022-10-05' 
 ORDER BY BOARD_ID DESC;
 
@@ -47,3 +62,5 @@ IF(TLNO IS NULL, 'NONE', TLNO) AS TLNO
 FROM PATIENT
 WHERE AGE <= 12 AND GEND_CD='W'
 ORDER BY AGE DESC, PT_NAME ASC
+
+

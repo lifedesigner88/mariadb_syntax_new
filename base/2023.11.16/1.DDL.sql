@@ -74,20 +74,19 @@ SHOW INDEX FROM posts;
     )
 
 
-테이블 이름 변경
- ALTER TABLE 테이블명 RENAME 새로운 테이블명
+-- 테이블 이름 변경
+--  ALTER TABLE 테이블명 RENAME 새로운 테이블명
 
 
 
- 컬럼 추가 (ADD)
-    ALTER TABLE 테이블명 ADD COLUMN 컬럼명 자료형 [NULL 또는 NOTNULL]
-    ALTER TABLE author  ADD COLUMN c
+--  컬럼 추가 (ADD)
+--     ALTER TABLE 테이블명 ADD COLUMN 컬럼명 자료형 [NULL 또는 NOTNULL]
+--     ALTER TABLE author  ADD COLUMN c
+
+
 
 
 ALTER TABLE author RENAME authors;  // 테이블 이름 변경
-
-
-
 ALTER TABLE author MODIFY   COLUMN name VARCHAR(100) NOT NULL  
 ALTER TABLE author ADD      COLUMN role VARCHAR(50)
 ALTER TABLE author DROP     COLUMN TEST    

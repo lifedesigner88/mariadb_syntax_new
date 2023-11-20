@@ -131,5 +131,3 @@ CHAR
 
     DATE_FORMAT 
         SELECT DATE_FORMAT ('2020-01-01 17:12:00', '%Y-%M-&T')
-
-

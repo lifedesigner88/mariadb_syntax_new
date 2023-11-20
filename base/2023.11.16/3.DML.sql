@@ -229,3 +229,83 @@ ALTER TABLE post ADD CONSTRAINT post_update
 FOREIGN KEY(author_id) REFERENCES author(id) ON UPDATE CASCADE;
 
 
+
+
+-- 제약조건(CONSTRAINT) 검색.
+show create table post;
+
+CREATE TABLE `post` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `title` varchar(255) NOT NULL,
+   `contents` varchar(3000) DEFAULT NULL,
+   `author_id` int(11) DEFAULT NULL,
+   `price` decimal(10,3) DEFAULT NULL,
+   `created_time` datetime(6) DEFAULT current_timestamp(6),
+
+
+   PRIMARY KEY (`id`),
+   KEY `post_update` (`author_id`),
+   CONSTRAINT `post_update` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON UPDATE SET NULL
+ ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+
+CREATE TABLE `author` (
+   `id` int(11) NOT NULL,
+   `name` varchar(100) NOT NULL,
+   `email` varchar(255) DEFAULT NULL,
+   `password` varchar(255) DEFAULT NULL,
+   `role` enum('user','admin') NOT NULL DEFAULT 'user',
+   `address` varchar(255) DEFAULT NULL,
+   `age` tinyint(3) unsigned DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `email_unique` (`email`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+
+-- 제약조건(CONSTRAINT) 검색.
+SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME='post';
+ALTER TABLE post DROP FOREIGN KEY post_update;
+ALTER TABLE post DROP INDEX author_id;
+
+ALTER TABLE post ADD CONSTRAINT post_update FOREIGN KEY(author_id) REFERENCES author(id) ON UPDATE SET NULL;
+
+show index from post;
+show create table post;
+
+DESCRIBE post;
+SELECT * FROM post;
+SELECT * FROM author;
+
+SHOW FULL COLUMNS FROM post;
+
+
+
+-- DEFAULT
+CREATE TABLE Test (
+    id      INT;
+    Name    varchar(30) DEFAULT 'Anonymous'    
+)
+
+
+
+-- 흐름제어
+CASE value
+    WHEN [compare_value1] THEN result1
+    WHEN [compare_value2] THEN result2...
+    ELSE result3
+END
+
+
+
+
+
+-- 제어문. 
+
+IF(a,b,c) 만약 a가 참이면, b를 반환하고, c는 거짓일경우 반환 값.
+    SELECT IF ( 3<1 , 'YES' , 'NO');
+IFNULL(a,b)     먄약 널이면 A, 아니면 B;
+

@@ -97,3 +97,8 @@ SELECT * FROM author WHERE name LIKE '1%';
 SELECT * FROM author WHERE name NOT LIKE '%G';
 SELECT * FROM author WHERE name NOT LIKE 's%';
 SELECT * FROM author WHERE name NOT LIKE '1%';
+
+
+
+
+

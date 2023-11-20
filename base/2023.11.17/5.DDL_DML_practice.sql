@@ -128,3 +128,36 @@ SELECT * FROM post WHERE date_format(create_time, ) =
 
 UNIQUE
 필드이름, 필드 타입,..., [CONSTRAINT 제약조건 이름] UNIQUE;
+
+
+
+SHOW INDEX FROM POST; -인덱스 
+
+ALTER TABLE author MODIFY COLUMN email 
+
+
+
+
+
+-- // 제약조건 
+SHOW INDEX FROM author;
+ALTER TABLE author ADD CONSTRAINT email_unique UNIQUE(email);
+
+ALTER TABLE 테이블명 DROP CONSTRAINT 제약조건 이름;
+ALTER TABLE 테이블명 DROP FOREIGN KEY 제약조건 이름;
+
+SELECT * FROM INFORMATION_SCHEMA
+
+ALTER TABLE author MODIFY COLUMN EMAIL VARCHAR(255) unique;
+제약조건, index 
+
+alter table author drop index email, 
+drop index;?
+
+-- 방법 2
+
+ALTER TABLE author 
+
+
+
+

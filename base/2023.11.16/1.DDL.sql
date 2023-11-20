@@ -61,21 +61,10 @@ SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = 'posts';
 SHOW INDEX FROM posts;
 
 
-
-/
 -- DDL - CREATE 
-테이블 생성
-
-    CREATE TABLE 테이블이름
-    (
-        필드이름1 필드타입1 [제약조건]
-        필드이름2 필드타입2 [제약조건]
-        [테이블 제약조건]
-    )
-
 
 -- 테이블 이름 변경
---  ALTER TABLE 테이블명 RENAME 새로운 테이블명
+ ALTER TABLE 테이블명 RENAME 새로운 테이블명
 
 
 

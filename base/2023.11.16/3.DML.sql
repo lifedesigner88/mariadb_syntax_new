@@ -211,3 +211,17 @@ SET FOREIGN_KEY_CHECKS=0;	-- 외래키 체크 끄기
 ALTER TABLE post MODIFY COLUMN name varchar(100) not null;
 
 SET FOREIGN_KEY_CHECKS=1;	-- 외래키 체크 켜기
+
+
+-- 외래키;
+FOREIGN KEY (필드이름)
+ON DELETE / UPDATE CASCADE ??
+
+on delete restrict, on update restrict;
+
+참조되는 테이블에서 데이터의 수정이나 삭제가 발생시 영향.
+
+CASCADE 참조되는 테이블에서 데이터를 삭제/수정 하면 같이 삭제/수정
+SET NULL 참조되는 테이블에서 데이터 수정하면 데이터 NULL 로 변경
+RESTRICT FK로 잡은 테이블의 데이터가 남아 있으면, 데이터 삭제, 수정 불가. 
+

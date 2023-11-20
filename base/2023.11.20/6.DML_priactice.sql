@@ -64,3 +64,10 @@ WHERE AGE <= 12 AND GEND_CD='W'
 ORDER BY AGE DESC, PT_NAME ASC
 
 
+INSERT INTO author(id, name, email) VALUE(13, 'SEJONG22', 'ASLKDFJ@GE.DD');
+commit;
+INSERT INTO author(id, name, email) VALUE(14, 'SEJONG22', 'ASLKDFJ@GE.DD');
+INSERT INTO post(title,contents,author_id) VALUE('ERAWE','2231', 13);
+rollback;
+
+show create table post;

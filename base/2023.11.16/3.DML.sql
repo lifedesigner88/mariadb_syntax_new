@@ -131,3 +131,83 @@ CHAR
 
     DATE_FORMAT 
         SELECT DATE_FORMAT ('2020-01-01 17:12:00', '%Y-%M-&T')
+
+        
+-- 포멧 변경, 컬럼명 지정. 
+     DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE;
+
+
+
+%Y  년도 (2021) 
+%m  월 (01, 02, 11)
+
+%y  년도 (21)
+%c  월 (1, 8)
+
+%d  일(01, 19)
+%M  월 (January, August)
+
+%e  일(1, 19)
+%b  월(Jan, Aug)
+
+
+%T  시간 (12:30:00)
+%W  요일(Wednesday, friday)
+
+%r  시간 (12:30:00 AM)
+%a  요일(Wed, Fri)
+
+%H  24시간 시간(01, 14, 18)
+%i  분 (00)
+
+%l  12시간 시간 (01, 02, 06)
+%S  초 (00)
+
+-- 오늘날짜 
+NOW()
+
+
+
+-- 데이터 
+DATE_FORMAT(date,format)
+SELECT * FROM post WHERE created_time LIKE '2023%';
+WHERE created_time BETWEEN '2021-01-01' AND '2023-11-17'
+WHERE created_time >='2021-01-01' AND created_time <='2023-11-17';
+
+
+
+
+
+신버전
+    CASE('123' as INT)
+    CASE('123' as signed) unsigned 가능
+
+구버전
+    CASE('123' as signed) 방식 unsigend(양수)
+
+
+
+
+
+제약조건
+    데이터를 입력받을 때 실행되는 검사규칙
+
+    CREATE 문으로 테이블을 생성 또는 
+
+     UNIQUE
+
+--  자동 증가.
+
+    AUTO 
+
+
+
+
+-- not null 조건 추가.
+ALTER TABLE author MODIFY COLUMN name varchar(100) not null;
+
+-- 외래키가 있는 경우. not널 조건 추가하려면 외래키를 꺼야한다.
+SET FOREIGN_KEY_CHECKS=0;	-- 외래키 체크 끄기
+ALTER TABLE post MODIFY COLUMN name varchar(100) not null;
+
+SET FOREIGN_KEY_CHECKS=1;	-- 외래키 체크 켜기

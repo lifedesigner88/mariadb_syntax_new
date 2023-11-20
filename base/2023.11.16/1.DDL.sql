@@ -139,4 +139,4 @@ CREATE TABLE post(
     );
 DESCRIBE post;
 
-ALTER TABLE author MODIFY COLUMN name varchar(100) not null;
+

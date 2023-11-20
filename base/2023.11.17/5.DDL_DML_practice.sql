@@ -31,6 +31,8 @@ UPDATE post set author_id=null WHERE author_id IS NOT NULL;
 -- 회원 모두 삭제
 DELETE FROM author;
 
+
+
 SELECT * FROM post order by title ASC, contents DESC limit 2;
 
 SELECT * FROM author;
@@ -38,6 +40,8 @@ SELECT * FROM post;
 
 DESCRIBE POST;
 DESCRIBE AUTHOR;
+
+DELETE FROM post WHERE id = 11;
 
 
 
@@ -93,3 +97,34 @@ SELECT * FROM author WHERE name LIKE '1%';
 SELECT * FROM author WHERE name NOT LIKE '%G';
 SELECT * FROM author WHERE name NOT LIKE 's%';
 SELECT * FROM author WHERE name NOT LIKE '1%';
+
+
+
+
+
+
+-- // 정렬, 데이터 포멧 변경. 
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND DATE_FORMAT(PUBLISHED_DATE , '%Y') ='2021' 
+        ORDER BY PUBLISHED_DATE ASC;
+
+
+
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND PUBLISHED_DATE LIKE '2021%' 
+        ORDER BY PUBLISHED_DATE ASC;
+
+        
+SELECT  BOOK_ID, 
+        DATE_FORMAT(PUBLISHED_DATE , '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK 
+        WHERE CATEGORY = '인문' AND PUBLISHED_DATE BEETWEEN ''
+        ORDER BY PUBLISHED_DATE ASC;
+
+
+SELECT * FROM post WHERE date_format(create_time, ) = 
+
+
+UNIQUE
+필드이름, 필드 타입,..., [CONSTRAINT 제약조건 이름] UNIQUE;

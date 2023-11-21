@@ -64,3 +64,41 @@ SELECT name, email FROM author UNION SELECT title, contents FROM post;
 
 UNION       중복.
 UNION ALL 은 중복한것도 같이 표시
+
+
+
+--- 서브쿼리. 
+
+- SELECT a.* FROM author a INNER JOIN post p ON a.id = p.author_id;
+- SELECT a.* FROM author a WHERE a.ID IN (SELECT p.author_id FROM post p);
+
+
+
+
+-- GROUP BY
+
+SELECT COUNT(*) FROM author;        /// 행의 갯수 
+SELECT COUNT(*) FROM post;
+
+round(대상값, 소수점 자리수)        // 소수점
+
+SELECT author_id, sum(price), round(avg(price),0) FROM post GROUP BY author_id;
+
+
+SELECT author_id, count(price), sum(price), round(avg(price),0), min(price), max(price) 
+FROM post GROUP BY author_id;
+
+
+SELECT author_id, count(author_id), sum(price), round(avg(price),0)  
+FROM post GROUP BY author_id;
+
+
+
+-- HAVING
+
+SELECT author_id, count(price), max(price), min(price), round(avg(price),0)  
+FROM post WHERE price > 3000 GROUP BY author_id;
+
+-- HAVING
+SELECT author_id, count(price), max(price), min(price), round(avg(price),0) 
+FROM post GROUP BY author_id having avg(price) >= 4000;

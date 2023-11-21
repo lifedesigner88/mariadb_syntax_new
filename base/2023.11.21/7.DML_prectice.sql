@@ -97,9 +97,11 @@ FROM post GROUP BY author_id;
 SELECT author_id, count(price), max(price), min(price), round(avg(price),0)  
 FROM post WHERE price > 3000 GROUP BY author_id;
 
+
 -- HAVING
 SELECT author_id, count(price), max(price), min(price), round(avg(price),0) 
 FROM post GROUP BY author_id HAVING avg(price) >= 4000;
+
 
 
 -- 입양 시각 구하기(1)
@@ -108,10 +110,13 @@ FROM ANIMAL_OUTS
 WHERE DATE_FORMAT(DATETIME,'%H:%i') BETWEEN'09:00' AND '20:00'
 GROUP BY DATE_FORMAT(DATETIME,'%H') ORDER BY HOUR ;
 
+
+
 -- 성분으로 구분한 아이스크림 총 주문량
 SELECT INGREDIENT_TYPE, SUM(TOTAL_ORDER) AS TOTAL_ORDER
 FROM ICECREAM_INFO AS I LEFT OUTER JOIN FIRST_HALF AS H 
 ON I.FLAVOR = H.FLAVOR GROUP BY INGREDIENT_TYPE ORDER BY TOTAL_ORDER ASC
+
 
 
 -- UNION - RECULSIVE
@@ -123,10 +128,14 @@ WHERE OPTIONS REGEXP '통풍시트|열선시트|가죽시트'
 GROUP BY CAR_TYPE ORDER BY CAR_TYPE;
 
 
+
+
 SELECT CAR_TYPE, COUNT(*) AS CARS
 FROM CAR_RENTAL_COMPANY_CAR 
 WHERE OPTIONS LIKE '%통풍시트%' OR OPTIONS LIKE '%열선시트%' OR OPTIONS LIKE '%가죽시트%'
 GROUP BY CAR_TYPE ORDER BY CAR_TYPE;
+
+
 
 
 -- 재구매가 일어난 상품과 회원 리스트 구하기
@@ -140,3 +149,43 @@ ORDER BY        USER_ID, PRODUCT_ID DESC;
 
 
 -- 	입양 시각 구하기(2)
+
+
+
+
+
+
+
+
+-- 재귀함수. 
+
+WITH RECURSIVE number_sequence(hour) as (
+    SELECT 0
+    UNION ALL
+    SELECT HOUR + 1 FROM number_sequence WHERE HOUR < 23
+)
+SELECT HOUR, 0 AS COUNT from number_sequence;
+
+
+
+-- 코드를 입력하세요
+
+# SELECT hour, count
+# FROM (
+
+# WITH RECURSIVE number_sequence(hour) as (
+#     SELECT 0
+#     UNION ALL
+#     SELECT HOUR + 1 FROM number_sequence WHERE HOUR < 23
+# )
+# SELECT HOUR, 0 AS COUNT from number_sequence;
+# where HOUR not in (SELECT CAST(DATE_FORMAT(DATETIME,'%H') AS UNSIGNED) AS HOUR FROM  ANIMAL_OUTS)
+             
+# union      
+                   
+                   
+# SELECT CAST(DATE_FORMAT(DATETIME,'%H') AS UNSIGNED) AS hour, COUNT(*) AS count
+# FROM ANIMAL_OUTS GROUP BY DATE_FORMAT(DATETIME,'%H')
+# GROUP BY hour ORDER BY hour
+
+# )

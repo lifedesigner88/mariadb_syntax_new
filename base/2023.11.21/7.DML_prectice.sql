@@ -76,7 +76,6 @@ UNION ALL 은 중복한것도 같이 표시
 
 
 -- GROUP BY
-
 SELECT COUNT(*) FROM author;        /// 행의 갯수 
 SELECT COUNT(*) FROM post;
 
@@ -95,10 +94,24 @@ FROM post GROUP BY author_id;
 
 
 -- HAVING
-
 SELECT author_id, count(price), max(price), min(price), round(avg(price),0)  
 FROM post WHERE price > 3000 GROUP BY author_id;
 
 -- HAVING
 SELECT author_id, count(price), max(price), min(price), round(avg(price),0) 
-FROM post GROUP BY author_id having avg(price) >= 4000;
+FROM post GROUP BY author_id HAVING avg(price) >= 4000;
+
+
+-- 입양 시각 구하기(1)
+SELECT CAST(DATE_FORMAT(DATETIME,'%H') as unsigned) AS HOUR, COUNT(DATETIME) AS COUNT
+FROM ANIMAL_OUTS
+WHERE DATE_FORMAT(DATETIME,'%H:%i') BETWEEN'09:00' AND '20:00'
+GROUP BY DATE_FORMAT(DATETIME,'%H') ORDER BY HOUR ;
+
+-- 성분으로 구분한 아이스크림 총 주문량
+SELECT INGREDIENT_TYPE, SUM(TOTAL_ORDER) AS TOTAL_ORDER
+FROM ICECREAM_INFO AS I LEFT OUTER JOIN FIRST_HALF AS H 
+ON I.FLAVOR = H.FLAVOR GROUP BY INGREDIENT_TYPE ORDER BY TOTAL_ORDER ASC
+
+
+-- UNION - RECULSIVE

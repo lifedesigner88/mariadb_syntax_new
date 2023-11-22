@@ -29,24 +29,60 @@ SELECT * FROM author WHERE name ='sejng' AND email = '@nl';
 -- 사용자 관리
 
 SELECT * FROM mysql.user;
-SHOW GRANTS FOR 'root'@'localhost';
-DROP USER 'testuser'@'localhost';
-
-
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testpw';
 GRANT SELECT ON board.author TO'testuser'@'localhost';
 REVOKE SELECT ON board.author FROM 'testuser'@'localhost';
 
 FLUSH PRIVILEGES;       
 SHOW GRANTS FOR 'testuser'@'localhost';
+DROP USER 'testuser'@'localhost';
+SHOW GRANTS FOR 'root'@'localhost';
 
 
 
 -- view
 
-    뷰(view)는 데이터베이스의 테이블과 유사한 구조를 가지지만,
-    가상의 테이블로서 실제 데이터를 저장하지 않는 데티어 베이스 실제 데이터 베이스를 참조만 한다. 
+CREATE VIEW author_for_view AS
+SELECT      name, email
+FROM        author;
+SELECT * FROM author_for_view;
 
-    CREATE VIEW 뷰네임 AS
-    SELECT 컬럼1, 컬럼 2
-    FROM 테이블명.
+
+SELECT * FROM mysql.user;
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testpw';
+GRANT SELECT ON board.author_for_view TO 'testuser'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'testuser'@'localhost';
+
+
+
+
+-- 저장 프로시져 (절차를 저장해 둔다.)
+
+STORED PROCEDURE
+
+
+DELIMITER $$
+CREATE PROCEDURE getUser(IN userId INT)
+BEGIN
+    SELECT *
+    FROM author
+    WHERE ID = userId;
+END $$
+DELIMITER ;
+
+
+CALL getUser(1);
+
+
+
+DELIMITER //
+CREATE PROCEDURE getUser2(IN userId INT)
+BEGIN
+    SELECT *
+    FROM author
+    WHERE ID = userId;
+END //
+DELIMITER ;
+
+CALL getUser2(1);

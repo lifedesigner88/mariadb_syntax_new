@@ -93,6 +93,7 @@ GRANT EXCUTE ON board.author_for_view TO 'testuser'@'localhost';
 SHOW CREATE PROCEDURE getUser;
 
 
+
 -- 다중 PROCEDURE
 DELIMITER //
 CREATE PROCEDURE setPost2(IN title VARCHAR(255), IN contents VARCHAR(3000), IN author_id INT)
@@ -102,33 +103,6 @@ BEGIN
 END //
 DELIMITER ;
 CALL setPost2('DSDFA','SEJONGG',4);
-
-
-
-
--- 변수
-DECLARE 변수명 변수타입 [DEFAULT default_value]
-select 컬럼명 into 변수 
-
-
-SET 변수명 = 수정값
-
-제어문
-
-IF 조건식 THEN
-    --
-ELSE
-    --
-END IF
-select 컬럼명 into 변수 
-
-
-
-WHILE 조건식 DO
-  -- 조건이 참일 도안 반복 실행할 명령
-END WHILE
-
-
 
 
 
@@ -165,10 +139,9 @@ DELIMITER ;
 CALL dataInsert100();
 
 
--- Dump
-
-mysqldump -u [user]
-
-
-
+-- DB Dump
 mysqldump -u root -p --default-character-set=utf8mb4 board > dumpfile.sql
+mysql -u root -p board < dumpfile.sql
+
+---
+git clone 레파지토리명

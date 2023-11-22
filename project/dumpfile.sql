@@ -1,0 +1,255 @@
+-- MariaDB dump 10.19-11.3.0-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: board
+-- ------------------------------------------------------
+-- Server version	11.3.0-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `author`
+--
+
+DROP TABLE IF EXISTS `author`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `author` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `address` varchar(255) DEFAULT NULL,
+  `age` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_unique` (`email`),
+  KEY `index_name` (`name`),
+  KEY `index_name_email` (`name`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `author`
+--
+
+LOCK TABLES `author` WRITE;
+/*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` VALUES
+(1,'S11EJONG','@.1',NULL,'user',NULL,24),
+(2,'111EJONG','@.3',NULL,'user',NULL,22),
+(3,'ser','23@2','113124','user','adfasf',25),
+(4,'ser','23@3','113124','user','adfasf',33),
+(5,'SEJONG','@.321',NULL,'user',NULL,35),
+(9,'98111EJONG','@.32',NULL,'user',NULL,36),
+(10,'124213','@.33',NULL,'user',NULL,29),
+(11,'sejong','12@341',NULL,'user',NULL,26),
+(12,'sejong','33@41',NULL,'user',NULL,28),
+(77,'sejong','@nl','123','user','dd',23),
+(233,'ser','23@1','113124','admin','adfasf',33);
+/*!40000 ALTER TABLE `author` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `author_for_view`
+--
+
+DROP TABLE IF EXISTS `author_for_view`;
+/*!50001 DROP VIEW IF EXISTS `author_for_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `author_for_view` AS SELECT
+ 1 AS `name`,
+  1 AS `email` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `contents` varchar(3000) DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `price` decimal(10,3) DEFAULT NULL,
+  `created_time` datetime(6) DEFAULT current_timestamp(6),
+  PRIMARY KEY (`id`),
+  KEY `post_update` (`author_id`),
+  CONSTRAINT `post_update` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post`
+--
+
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES
+(1,'GOOD','ASDKFJASLDFJ...',5,8000.000,'2023-11-12 16:28:30.436756'),
+(2,'12GOOD','aasdfD KFJASLDFJ...',1,7000.000,'2021-11-17 16:28:30.436756'),
+(3,'ddfaaD','jaki a123...',2,6500.000,'2023-11-20 16:28:30.436756'),
+(4,'GOOD','ASDKFJASLDFJ...',2,3400.000,'2023-11-17 16:28:30.436756'),
+(5,'GOOD','ASDKFJASLDFJ...',3,8500.000,'2023-11-20 16:28:30.436756'),
+(6,'djkd',NULL,3,1234.100,'2023-11-20 16:28:30.436756'),
+(9,'33',NULL,1,3300.000,'2021-11-17 16:35:44.385934'),
+(10,'444',NULL,1,4450.000,'2023-11-17 16:36:52.192102'),
+(12,'SEJONG',NULL,1,6430.000,'2023-11-20 11:33:28.401789'),
+(13,'SEJONG',NULL,1,1112.000,'2023-11-20 12:14:34.131429'),
+(14,'SEJONG',NULL,3,3450.000,'2023-11-20 12:14:35.313723'),
+(19,'DSDFA','SEJONGG',4,NULL,'2023-11-22 14:34:05.480220'),
+(20,'DSDFA','SEJONGG',4,NULL,'2023-11-22 14:36:14.766370'),
+(21,'hello1',NULL,NULL,NULL,'2023-11-22 16:09:26.407715'),
+(22,'hello0',NULL,NULL,NULL,'2023-11-22 16:10:06.821222'),
+(23,'hello1',NULL,NULL,NULL,'2023-11-22 16:10:06.832982'),
+(24,'hello2',NULL,NULL,NULL,'2023-11-22 16:10:06.851559'),
+(25,'hello3',NULL,NULL,NULL,'2023-11-22 16:10:06.856366'),
+(26,'hello4',NULL,NULL,NULL,'2023-11-22 16:10:06.858740'),
+(27,'hello5',NULL,NULL,NULL,'2023-11-22 16:10:06.861201'),
+(28,'hello6',NULL,NULL,NULL,'2023-11-22 16:10:06.863501'),
+(29,'hello7',NULL,NULL,NULL,'2023-11-22 16:10:06.865823'),
+(30,'hello8',NULL,NULL,NULL,'2023-11-22 16:10:06.868199'),
+(31,'hello9',NULL,NULL,NULL,'2023-11-22 16:10:06.870646'),
+(32,'hello 0',NULL,NULL,NULL,'2023-11-22 16:13:19.817941'),
+(33,'hello 1',NULL,NULL,NULL,'2023-11-22 16:13:19.820628'),
+(34,'hello 2',NULL,NULL,NULL,'2023-11-22 16:13:19.823454'),
+(35,'hello 3',NULL,NULL,NULL,'2023-11-22 16:13:19.826128'),
+(36,'hello 4',NULL,NULL,NULL,'2023-11-22 16:13:19.828668'),
+(37,'hello 5',NULL,NULL,NULL,'2023-11-22 16:13:19.833710'),
+(38,'hello 6',NULL,NULL,NULL,'2023-11-22 16:13:19.836187'),
+(39,'hello 7',NULL,NULL,NULL,'2023-11-22 16:13:19.838585'),
+(40,'hello 8',NULL,NULL,NULL,'2023-11-22 16:13:19.840967'),
+(41,'hello 9',NULL,NULL,NULL,'2023-11-22 16:13:19.843422'),
+(42,'hello 10',NULL,NULL,NULL,'2023-11-22 16:13:19.845898'),
+(43,'hello 11',NULL,NULL,NULL,'2023-11-22 16:13:19.848385'),
+(44,'hello 12',NULL,NULL,NULL,'2023-11-22 16:13:19.850780'),
+(45,'hello 13',NULL,NULL,NULL,'2023-11-22 16:13:19.853251'),
+(46,'hello 14',NULL,NULL,NULL,'2023-11-22 16:13:19.855784'),
+(47,'hello 15',NULL,NULL,NULL,'2023-11-22 16:13:19.858201'),
+(48,'hello 16',NULL,NULL,NULL,'2023-11-22 16:13:19.860887'),
+(49,'hello 17',NULL,NULL,NULL,'2023-11-22 16:13:19.863724'),
+(50,'hello 18',NULL,NULL,NULL,'2023-11-22 16:13:19.866559'),
+(51,'hello 19',NULL,NULL,NULL,'2023-11-22 16:13:19.869747'),
+(52,'hello 20',NULL,NULL,NULL,'2023-11-22 16:13:19.872678'),
+(53,'hello 21',NULL,NULL,NULL,'2023-11-22 16:13:19.875366'),
+(54,'hello 22',NULL,NULL,NULL,'2023-11-22 16:13:19.877975'),
+(55,'hello 23',NULL,NULL,NULL,'2023-11-22 16:13:19.880480'),
+(56,'hello 24',NULL,NULL,NULL,'2023-11-22 16:13:19.882873'),
+(57,'hello 25',NULL,NULL,NULL,'2023-11-22 16:13:19.885388'),
+(58,'hello 26',NULL,NULL,NULL,'2023-11-22 16:13:19.887923'),
+(59,'hello 27',NULL,NULL,NULL,'2023-11-22 16:13:19.890460'),
+(60,'hello 28',NULL,NULL,NULL,'2023-11-22 16:13:19.892727'),
+(61,'hello 29',NULL,NULL,NULL,'2023-11-22 16:13:19.895018'),
+(62,'hello 30',NULL,NULL,NULL,'2023-11-22 16:13:19.897300'),
+(63,'hello 31',NULL,NULL,NULL,'2023-11-22 16:13:19.899468'),
+(64,'hello 32',NULL,NULL,NULL,'2023-11-22 16:13:19.901876'),
+(65,'hello 33',NULL,NULL,NULL,'2023-11-22 16:13:19.904224'),
+(66,'hello 34',NULL,NULL,NULL,'2023-11-22 16:13:19.906577'),
+(67,'hello 35',NULL,NULL,NULL,'2023-11-22 16:13:19.908908'),
+(68,'hello 36',NULL,NULL,NULL,'2023-11-22 16:13:19.911250'),
+(69,'hello 37',NULL,NULL,NULL,'2023-11-22 16:13:19.913575'),
+(70,'hello 38',NULL,NULL,NULL,'2023-11-22 16:13:19.915896'),
+(71,'hello 39',NULL,NULL,NULL,'2023-11-22 16:13:19.918231'),
+(72,'hello 40',NULL,NULL,NULL,'2023-11-22 16:13:19.920596'),
+(73,'hello 41',NULL,NULL,NULL,'2023-11-22 16:13:19.923030'),
+(74,'hello 42',NULL,NULL,NULL,'2023-11-22 16:13:19.925453'),
+(75,'hello 43',NULL,NULL,NULL,'2023-11-22 16:13:19.927898'),
+(76,'hello 44',NULL,NULL,NULL,'2023-11-22 16:13:19.930448'),
+(77,'hello 45',NULL,NULL,NULL,'2023-11-22 16:13:19.933008'),
+(78,'hello 46',NULL,NULL,NULL,'2023-11-22 16:13:19.935478'),
+(79,'hello 47',NULL,NULL,NULL,'2023-11-22 16:13:19.938355'),
+(80,'hello 48',NULL,NULL,NULL,'2023-11-22 16:13:19.940994'),
+(81,'hello 49',NULL,NULL,NULL,'2023-11-22 16:13:19.943885'),
+(82,'hello 50',NULL,NULL,NULL,'2023-11-22 16:13:19.946924'),
+(83,'hello 51',NULL,NULL,NULL,'2023-11-22 16:13:19.950046'),
+(84,'hello 52',NULL,NULL,NULL,'2023-11-22 16:13:19.953108'),
+(85,'hello 53',NULL,NULL,NULL,'2023-11-22 16:13:19.956117'),
+(86,'hello 54',NULL,NULL,NULL,'2023-11-22 16:13:19.958917'),
+(87,'hello 55',NULL,NULL,NULL,'2023-11-22 16:13:19.961831'),
+(88,'hello 56',NULL,NULL,NULL,'2023-11-22 16:13:19.964950'),
+(89,'hello 57',NULL,NULL,NULL,'2023-11-22 16:13:19.968016'),
+(90,'hello 58',NULL,NULL,NULL,'2023-11-22 16:13:19.971205'),
+(91,'hello 59',NULL,NULL,NULL,'2023-11-22 16:13:19.974378'),
+(92,'hello 60',NULL,NULL,NULL,'2023-11-22 16:13:19.977623'),
+(93,'hello 61',NULL,NULL,NULL,'2023-11-22 16:13:19.980663'),
+(94,'hello 62',NULL,NULL,NULL,'2023-11-22 16:13:19.983514'),
+(95,'hello 63',NULL,NULL,NULL,'2023-11-22 16:13:19.986447'),
+(96,'hello 64',NULL,NULL,NULL,'2023-11-22 16:13:19.989219'),
+(97,'hello 65',NULL,NULL,NULL,'2023-11-22 16:13:19.991898'),
+(98,'hello 66',NULL,NULL,NULL,'2023-11-22 16:13:19.994779'),
+(99,'hello 67',NULL,NULL,NULL,'2023-11-22 16:13:19.997779'),
+(100,'hello 68',NULL,NULL,NULL,'2023-11-22 16:13:20.000689'),
+(101,'hello 69',NULL,NULL,NULL,'2023-11-22 16:13:20.003567'),
+(102,'hello 70',NULL,NULL,NULL,'2023-11-22 16:13:20.006384'),
+(103,'hello 71',NULL,NULL,NULL,'2023-11-22 16:13:20.009048'),
+(104,'hello 72',NULL,NULL,NULL,'2023-11-22 16:13:20.011928'),
+(105,'hello 73',NULL,NULL,NULL,'2023-11-22 16:13:20.014851'),
+(106,'hello 74',NULL,NULL,NULL,'2023-11-22 16:13:20.017856'),
+(107,'hello 75',NULL,NULL,NULL,'2023-11-22 16:13:20.021019'),
+(108,'hello 76',NULL,NULL,NULL,'2023-11-22 16:13:20.023904'),
+(109,'hello 77',NULL,NULL,NULL,'2023-11-22 16:13:20.026764'),
+(110,'hello 78',NULL,NULL,NULL,'2023-11-22 16:13:20.029692'),
+(111,'hello 79',NULL,NULL,NULL,'2023-11-22 16:13:20.032492'),
+(112,'hello 80',NULL,NULL,NULL,'2023-11-22 16:13:20.035326'),
+(113,'hello 81',NULL,NULL,NULL,'2023-11-22 16:13:20.038167'),
+(114,'hello 82',NULL,NULL,NULL,'2023-11-22 16:13:20.040847'),
+(115,'hello 83',NULL,NULL,NULL,'2023-11-22 16:13:20.043721'),
+(116,'hello 84',NULL,NULL,NULL,'2023-11-22 16:13:20.046598'),
+(117,'hello 85',NULL,NULL,NULL,'2023-11-22 16:13:20.049663'),
+(118,'hello 86',NULL,NULL,NULL,'2023-11-22 16:13:20.052682'),
+(119,'hello 87',NULL,NULL,NULL,'2023-11-22 16:13:20.055558'),
+(120,'hello 88',NULL,NULL,NULL,'2023-11-22 16:13:20.058277'),
+(121,'hello 89',NULL,NULL,NULL,'2023-11-22 16:13:20.061188'),
+(122,'hello 90',NULL,NULL,NULL,'2023-11-22 16:13:20.064651'),
+(123,'hello 91',NULL,NULL,NULL,'2023-11-22 16:13:20.067832'),
+(124,'hello 92',NULL,NULL,NULL,'2023-11-22 16:13:20.070831'),
+(125,'hello 93',NULL,NULL,NULL,'2023-11-22 16:13:20.073813'),
+(126,'hello 94',NULL,NULL,NULL,'2023-11-22 16:13:20.076814'),
+(127,'hello 95',NULL,NULL,NULL,'2023-11-22 16:13:20.079860'),
+(128,'hello 96',NULL,NULL,NULL,'2023-11-22 16:13:20.082949'),
+(129,'hello 97',NULL,NULL,NULL,'2023-11-22 16:13:20.086199'),
+(130,'hello 98',NULL,NULL,NULL,'2023-11-22 16:13:20.089242'),
+(131,'hello 99',NULL,NULL,NULL,'2023-11-22 16:13:20.092089');
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Final view structure for view `author_for_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `author_for_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `author_for_view` AS select `author`.`name` AS `name`,`author`.`email` AS `email` from `author` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-11-22 17:14:14

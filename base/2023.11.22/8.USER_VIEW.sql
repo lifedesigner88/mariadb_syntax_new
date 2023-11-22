@@ -132,7 +132,7 @@ END WHILE
 
 
 
-  -- 변수 넣어서 is 작성하기.
+ -- if, value, 
 DELIMITER //
 CREATE PROCEDURE searchAuthor(IN in_author_id INT)
 BEGIN
@@ -151,6 +151,24 @@ CALL searchAuthor(2);
 
 
 
---- concat
+ -- while, concat
+DELIMITER //
+CREATE PROCEDURE dataInsert100()
+BEGIN
+	DECLARE a INT DEFAULT 0;
+    WHILE A < 100 DO
+		INSERT INTO post(title) value(concat('hello ',a));
+        SET A = A + 1;
+    END WHILE;
+END //
+DELIMITER ;
+CALL dataInsert100();
 
-concat("hello ")
+
+-- Dump
+
+mysqldump -u [user]
+
+
+
+mysqldump -u root -p --default-character-set=utf8mb4 board > dumpfile.sql

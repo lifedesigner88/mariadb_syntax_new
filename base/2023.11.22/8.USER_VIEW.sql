@@ -74,7 +74,7 @@ DELIMITER ;
 
 CALL getUser(1);
 
-
+-- 
 
 DELIMITER //
 CREATE PROCEDURE getUser2(IN userId INT)
@@ -86,3 +86,20 @@ END //
 DELIMITER ;
 
 CALL getUser2(1);
+
+-- 
+
+GRANT EXCUTE ON board.author_for_view TO 'testuser'@'localhost';
+SHOW CREATE PROCEDURE getUser;
+
+
+-- 다중 PROCEDURE
+
+DELIMITER //
+CREATE PROCEDURE setPost2(IN title VARCHAR(255), IN contents VARCHAR(3000), IN author_id INT)
+BEGIN
+    INSERT INTO post(title, contents, author_id)
+    VALUE(title, contents, author_id);
+END //
+DELIMITER ;
+CALL setPost2('DSDFA','SEJONGG',4);

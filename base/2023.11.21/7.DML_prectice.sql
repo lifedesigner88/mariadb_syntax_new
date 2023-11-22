@@ -148,7 +148,7 @@ ORDER BY        USER_ID, PRODUCT_ID DESC;
 
 
 
--- 	입양 시각 구하기(2)
+-- 	입양 시각 구하기
 
 
 

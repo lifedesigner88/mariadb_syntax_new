@@ -145,3 +145,5 @@ mysql -u root -p board < dumpfile.sql
 
 ---
 git clone 레파지토리명
+
+sudo apt install maria db

@@ -94,7 +94,6 @@ SHOW CREATE PROCEDURE getUser;
 
 
 -- 다중 PROCEDURE
-
 DELIMITER //
 CREATE PROCEDURE setPost2(IN title VARCHAR(255), IN contents VARCHAR(3000), IN author_id INT)
 BEGIN
@@ -103,3 +102,55 @@ BEGIN
 END //
 DELIMITER ;
 CALL setPost2('DSDFA','SEJONGG',4);
+
+
+
+
+-- 변수
+DECLARE 변수명 변수타입 [DEFAULT default_value]
+select 컬럼명 into 변수 
+
+
+SET 변수명 = 수정값
+
+제어문
+
+IF 조건식 THEN
+    --
+ELSE
+    --
+END IF
+select 컬럼명 into 변수 
+
+
+
+WHILE 조건식 DO
+  -- 조건이 참일 도안 반복 실행할 명령
+END WHILE
+
+
+
+
+
+  -- 변수 넣어서 is 작성하기.
+DELIMITER //
+CREATE PROCEDURE searchAuthor(IN in_author_id INT)
+BEGIN
+	DECLARE valPrice INT DEFAULT 0;
+    SELECT avg(price) into valPrice FROM post WHERE author_id = in_author_id; 
+	IF valprice is null THEN
+		SELECT valPrice as averagePrice , '글이 없는 작가입니다' as message;
+    ELSEIF valPrice > 4000 THEN
+		SELECT valPrice as averagePrice , '고액 원고료 작가입니다.' as message;
+	ELSE
+		SELECT valPrice  as averagePrice , '고액 원고료 작가가 아닙니다.' as message;        
+    END IF;
+END //
+DELIMITER ;
+CALL searchAuthor(2);
+
+
+
+--- concat
+
+concat("hello ")

@@ -45,3 +45,13 @@ fc-list | grep -i nanum
 fc-list
 
 scp : 파일 전송 관련 명령어. 
+
+
+
+
+
+
+
+-- 다이어그램
+
+https://app.diagrams.net/

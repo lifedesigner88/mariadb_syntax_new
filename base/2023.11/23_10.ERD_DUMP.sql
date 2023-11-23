@@ -50,8 +50,17 @@ scp : 파일 전송 관련 명령어.
 
 
 
-
-
 -- 다이어그램
-
 https://app.diagrams.net/
+
+
+개념적 모델링
+논리적 모델링
+물리적 모델링
+테스트 결과서 (insert, update -> 캡쳐)
+
+
+팀프로젝트 
+repository 만들고 -> 팀원기여
+
+git 팀장ㅇ

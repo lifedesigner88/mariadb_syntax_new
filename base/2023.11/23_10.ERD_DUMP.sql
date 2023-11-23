@@ -66,3 +66,80 @@ repository 만들고 -> 팀원기여
 
 
 https://www.erdcloud.com/
+
+
+
+
+CREATE TABLE adress(
+    id          INT,
+    state_city          VARCHAR(255),
+    details             VARCHAR(255), 
+    zip_code            VARCHAR(255), 
+    phonenumber         VARCHAR(255), 
+
+    PRIMARY     KEY(id)
+    );
+
+CREATE TABLE posts_authors(
+    id             INT,
+    author_id      VARCHAR(255),
+    post_id        VARCHAR(255), 
+
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(author_id)  REFERENCES author(id)
+    );
+
+
+
+ALTER TABLE adress 
+ADD FOREIGN KEY(author_id) REFERENCES author(id) ;
+
+
+
+CREATE TABLE `adress` (
+   `id` int(11) NOT NULL,
+   `state_city` varchar(255) DEFAULT NULL,
+   `details` varchar(255) DEFAULT NULL,
+   `zip_code` varchar(255) DEFAULT NULL,
+   `phonenumber` varchar(255) DEFAULT NULL,
+   `author_id` int(11) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   KEY `author_id` (`author_id`),
+   CONSTRAINT `adress_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON DELETE CASCADE
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+ CREATE TABLE `post` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `title` varchar(255) NOT NULL,
+   `contents` varchar(3000) DEFAULT NULL,
+   `author_id` int(11) DEFAULT NULL,
+   `price` decimal(10,3) DEFAULT NULL,
+   `created_time` datetime(6) DEFAULT current_timestamp(6),
+   PRIMARY KEY (`id`),
+   KEY `post_update` (`author_id`),
+   CONSTRAINT `post_update` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON UPDATE SET NULL
+ ) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+ALTER TABLE post ADD FOREIGN KEY(author_id) REFERENCES author(id) ON DELETE CASCADE
+
+ALTER TABLE EMP DROP CONSTRAINT PK_EMP;
+
+
+
+
+ 
+ALTER TABLE post ADD CONSTRAINT onDeleteCASCADE FOREIGN KEY(author_id) REFERENCES author(id) ON DELETE CASCADE;
+select * from information_schema.table_constraints WHERE TABLE_NAME = 'post';
+ALTER TABLE post DROP CONSTRAINT onDeleteCASCADE;
+
+
+DESCRIBE post;
+ALTER TABLE post DROP COLUMN author_id;
+show index from post;
+ALTER TABLE post DROP CONSTRAINT onDeleteCASCADE;
+alter table post DROP author_id;

@@ -139,6 +139,8 @@ DELIMITER ;
 CALL dataInsert100();
 
 
+
+
 -- DB Dump
 mysqldump -u root -p --default-character-set=utf8mb4 board > dumpfile.sql
 mysql -u root -p board < dumpfile.sql

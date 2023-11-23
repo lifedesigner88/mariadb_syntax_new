@@ -130,16 +130,28 @@ ALTER TABLE post ADD FOREIGN KEY(author_id) REFERENCES author(id) ON DELETE CASC
 ALTER TABLE EMP DROP CONSTRAINT PK_EMP;
 
 
-
-
- 
 ALTER TABLE post ADD CONSTRAINT onDeleteCASCADE FOREIGN KEY(author_id) REFERENCES author(id) ON DELETE CASCADE;
 select * from information_schema.table_constraints WHERE TABLE_NAME = 'post';
 ALTER TABLE post DROP CONSTRAINT onDeleteCASCADE;
-
 
 DESCRIBE post;
 ALTER TABLE post DROP COLUMN author_id;
 show index from post;
 ALTER TABLE post DROP CONSTRAINT onDeleteCASCADE;
 alter table post DROP author_id;
+
+
+
+
+
+CREATE TABLE posts_authors(
+    id          INT,
+    author_id 	INT,
+    post_id     INT,
+
+    PRIMARY     KEY(id),
+    CONSTRAINT `author_id_f` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON UPDATE SET NULL,
+    CONSTRAINT `post_id_f` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON UPDATE SET NULL
+    );
+    
+SELECT * FROM posts_authors;   

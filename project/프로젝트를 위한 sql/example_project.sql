@@ -67,20 +67,24 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sakila`.`address` (
   `address_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `address` VARCHAR(50) NOT NULL,
-  `address2` VARCHAR(50) NULL DEFAULT NULL,
-  `district` VARCHAR(20) NOT NULL,
-  `city_id` SMALLINT UNSIGNED NOT NULL,
-  `postal_code` VARCHAR(10) NULL DEFAULT NULL,
-  `phone` VARCHAR(20) NOT NULL,
-  `last_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `address` VARCHAR(50) 		NOT NULL,
+  `address2` VARCHAR(50) 		NULL 		DEFAULT NULL,
+  `district` VARCHAR(20) 		NOT NULL,
+  `city_id` SMALLINT UNSIGNED 	NOT NULL,
+  `postal_code` VARCHAR(10) 	NULL 		DEFAULT NULL,
+  `phone` VARCHAR(20) 			NOT NULL,
+  `last_update` TIMESTAMP 		NOT 		NULL DEFAULT 	CURRENT_TIMESTAMP,
+
   PRIMARY KEY (`address_id`),
+
   INDEX `idx_fk_city_id` (`city_id` ASC),
+
   CONSTRAINT `fk_address_city`
     FOREIGN KEY (`city_id`)
     REFERENCES `sakila`.`city` (`city_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
+
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -101,30 +105,35 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sakila`.`staff`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sakila`.`staff` (
-  `staff_id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `address_id` SMALLINT UNSIGNED NOT NULL,
-  `picture` BLOB NULL,
-  `email` VARCHAR(50) NULL DEFAULT NULL,
-  `store_id` TINYINT UNSIGNED NOT NULL,
-  `active` TINYINT(1) NOT NULL DEFAULT TRUE,
-  `username` VARCHAR(16) NOT NULL,
-  `password` VARCHAR(40) BINARY NULL DEFAULT NULL,
-  `last_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `staff_id` 				TINYINT UNSIGNED 		NOT NULL 	AUTO_INCREMENT,
+  `first_name` 				VARCHAR(45) 			NOT NULL,
+  `last_name` 				VARCHAR(45) 			NOT NULL,
+  `address_id` 				SMALLINT UNSIGNED 		NOT NULL,
+  `picture` 				BLOB 				NULL,
+  `email` 					VARCHAR(50) 			NULL 			DEFAULT NULL,
+  `store_id` 				TINYINT UNSIGNED 		NOT NULL,
+  `active` 					TINYINT(1) 				NOT NULL 		DEFAULT TRUE,
+  `username` 				VARCHAR(16) 			NOT NULL,
+  `password` 				VARCHAR(40) 			BINARY NULL 	DEFAULT NULL,
+  `last_update` 			TIMESTAMP 				NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+
   PRIMARY KEY (`staff_id`),
+
   INDEX `idx_fk_store_id` (`store_id` ASC),
   INDEX `idx_fk_address_id` (`address_id` ASC),
+
   CONSTRAINT `fk_staff_store`
     FOREIGN KEY (`store_id`)
     REFERENCES `sakila`.`store` (`store_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
+
   CONSTRAINT `fk_staff_address`
     FOREIGN KEY (`address_id`)
     REFERENCES `sakila`.`address` (`address_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
+
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 

@@ -155,3 +155,4 @@ CREATE TABLE posts_authors(
     );
     
 SELECT * FROM posts_authors;   
+

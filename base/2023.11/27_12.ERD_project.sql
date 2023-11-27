@@ -100,8 +100,22 @@ select 15 -->
 set key value nx ( 중복되는 경우 )
 set key value ex 초단위 ( 세션 만료시간 )
 
-
-
  flushdb
 
- 
+
+ZADD key score member               //  
+ZREM key member                     //  특정키의 특정 맴버 삭제
+ZRANK key member                    //  특정 맴버 위치 정보 반환
+ZRANGE stock_prices 0 -1            //  기준 오름차순 조회
+ZREVRANGE stock_prices 0 -1         //  기준 내림 차순
+
+
+
+특정 키 값을 ++ 하는 방법. 
+특정키에 숫자값을 0 SET
+INCR KEYNAME
+DECR KEYNAME
+
+
+
+

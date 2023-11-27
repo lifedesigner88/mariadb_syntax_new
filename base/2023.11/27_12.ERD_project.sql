@@ -25,7 +25,32 @@ PL
 엔진x => 로드벨런서 프록시
 
 
+클라이언트 -> 서버 (revers proxy)
+서버 -> 클라이언트 (forward proxy)  VPN 아이피 유회.
+
+
 master => 플라이머리, 메인
 slaver => 레플리카, 세컨드리
 
 재해복구 시스템. DR(Disaster Recovery)
+
+
+
+// 교시
+
+    redis -> 리눅스 (윈도우 지원 안됨)
+    도커 x
+
+    HA > PROXY (대리인) , 로드밸런서 (라운드로빈)
+    nginx(로드밸런서)
+
+
+    DB 서버 구성 - HA 구성
+    haproxy mysql 멀티 서버 구성에 많이 사용하는 프로그램. 
+
+
+
+    mysql -u username -p -h 192.168.1.100 -P 3307
+    -h = host 라는 뜻이다. 
+
+

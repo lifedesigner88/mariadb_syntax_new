@@ -96,3 +96,12 @@ redis-server --version
 redis-cli => 그냥 들어가면 0번
 
 select 15 --> 
+
+set key value nx ( 중복되는 경우 )
+set key value ex 초단위 ( 세션 만료시간 )
+
+
+
+ flushdb
+
+ 

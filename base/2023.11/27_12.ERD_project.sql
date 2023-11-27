@@ -79,3 +79,20 @@ https://www.redis.com
 
 셰션() => 속도가 빠르기 때문에 id 검사하는데 쓰일 수 있다. 
 토큰()
+
+
+
+program > thread > 자바 멀티플. 
+SPRING 은 thread 200 개 정도 지원한다. 
+
+
+
+레딧은 싱글스레드
+
+sudo apt-get update
+sudo apt-get install -y redis-server
+redis-server --version
+
+redis-cli => 그냥 들어가면 0번
+
+select 15 --> 

@@ -45,6 +45,29 @@ WBS(Work Breakdown Structure) 담당자. => 팀장 주도적 작성
 
 
 
+// 유닛 테스트 - 프로그램 (매서드, 클래스)
+// 통합 테스트 - 
+// 시스템 테스트 -
+// 인수 테스트 -    고객이 직접 참여해서 테스트 해본다. 
+
+
+-- 짧게 짧게 배포한다. 
+
+// 폭포수 모델 -> 그랜드 오픈. 
+// 애자일 -> 고객에게 빨리 오픈하고 계속 수정하는 방식. 
+MVP 모델 (Minimum Viable Product) => 먼저 시제품을 만든다. 
+
+
+SI (System integration)
+SM (System Management)
+SE (System Engineer)
+OP (Operator)
+SP (System programmer)
+PG (Programmer)
+Solution 
+
+
+
 
 
 

@@ -26,3 +26,7 @@ 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
 만료기간 없는 토큰.
 
 
+git clone https//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:x-oauth-basic@
+
+
+https://github.com/lifedesigner88/git_study.git

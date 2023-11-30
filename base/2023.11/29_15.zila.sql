@@ -69,7 +69,7 @@ git restore --staged .
 
 commit 취소
 git reset HEAD~1  (또는 HEAD^)
-    unstaged
+    unstaged                                                                                                                                                                                              
 git reset --soft head~1
     statged 상태유지
 
@@ -87,3 +87,14 @@ git diff commit1 commit2
 git diff main origin/main
 
 git fetch origin main
+
+git reset head^ 
+git reset --soft head^
+
+FETCH_HEAD => git_fetch 명령어를 마지막으로 실행 했을 때 
+원격 저장소에서 가져온 브랜치의 최신 커밋을 가리키는 참조.
+
+
+git merge fetch_head
+
+

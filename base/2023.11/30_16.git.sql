@@ -58,9 +58,15 @@ dev에서 main 으로 최종 merge
 
 
 
+git fetch origin
+git branch
+git branch 특정 브랜치명
+git checkout 브랜치명
+
+git checkout -b         // 새 브랜치를 생성하고 해당 브랜치로 전환
 
 
+git branch -D 브랜치명 : 로컬 브랜치 삭제
+git push origin -D
 
-
-
-
+git remote prune origin
